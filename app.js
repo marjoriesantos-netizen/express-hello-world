@@ -18,6 +18,14 @@ app.get('/meunome', (req, res) => {
 app.get('/tico', (req, res) => {
     res.send('teco');
 });
+app.get('/pokemons', (req, res) => {
+    const osDezPrimeiros = [
+        "Pikachu", "Caterpie", "Pidgeotto", "Bulbasaur", 
+        "Charmander", "Squirtle", "Krabby", "Raticate", 
+        "Haunter", "Primeape"
+    ];
+    res.json({ pokemons: osDezPrimeiros });
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
