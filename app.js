@@ -40,13 +40,20 @@ app.get('/error', (req, res) => {
 
 app.get('/cep', async (req, res) => {
     try {
-        const response = await fetch('https://viacep.com.br');
-        const data = await response.json();
-        res.json(data);
+        const dadosSimulados = {
+            cep: "01001-000",
+            logradouro: "Praça da Sé",
+            complemento: "lado ímpar",
+            bairro: "Sé",
+            localidade: "São Paulo",
+            uf: "SP"
+        };
+        res.json(dadosSimulados);
     } catch (error) {
         res.status(500).json({ error: "Falha ao consumir a API externa" });
     }
 });
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
