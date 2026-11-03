@@ -30,6 +30,18 @@ app.post('/series', (req, res) => {
     const minhasSeries = ["Breaking Bad", "Stranger Things", "Dark"];
     res.json({ series_favoritas: minhasSeries });
 });
+app.get('/error', (req, res) => {
+    throw new Error("Erro simulado: Bug em produção!");
+});
+app.get('/cep', async (req, res) => {
+    try {
+        const response = await fetch('https://viacep.com.br');
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: "Falha ao consumir a API externa" });
+    }
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
